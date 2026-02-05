@@ -50,7 +50,32 @@ Cuando completes CONTACT-001, haz commit normal. Si hay merge conflict menor en 
 
 ## 🎯 OBJETIVOS PRINCIPALES
 
-### 🔥🔥 PRIORIDAD CRÍTICA
+### 🔥🔥🔥 PRIORIDAD MÁXIMA (NEW)
+
+#### REDESIGN-001: Institutional-Grade UI Redesign
+**Description:** Complete frontend redesign to institutional design parity  
+**Branch:** `feature/institutional-redesign`  
+**Spec:** `REDESIGN-SPEC.md` (full 7-phase specification)  
+**Estimate:** 19-30 hours  
+**Priority:** Above CONTACT-001 (establishes foundation)  
+
+**Phases:**
+1. Design Lock (colors, typography) - 1h
+2. Layout Reconstruction (12-column grid) - 4-6h  
+3. Hero Section (split layout + analytical visual) - 2-3h
+4. Card System (services/capabilities) - 3-4h
+5. Navigation & Footer (institutional density) - 2h
+6. Copy Filtering (anti-marketing) - 1-2h
+7. Analytical Visuals (graphs, neural nets) - 4-6h
+8. QA & Visual Audit - 2h
+
+**Reference:** Visual provided in project showing dark, analytical, authoritative design
+
+**Why Priority:** New design system must be established before contact form integration
+
+---
+
+### 🔥🔥 PRIORIDAD CRÍTICA (Original)
 
 #### CONTACT-001: Contact Section Optimization
 **Meta:** Crear sección de contacto calificada que filtre leads y maximize señal
