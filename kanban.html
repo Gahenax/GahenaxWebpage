@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board - Gahenax Webpage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #07070a 0%, #0d0d15 100%);
+            color: #fff;
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #64ff8f, #7b5cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .column {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            min-height: 400px;
+        }
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .column-title {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex: 1;
+        }
+
+        .column-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .column.todo .column-title {
+            color: #ff6b6b;
+        }
+
+        .column.inprogress .column-title {
+            color: #ffd166;
+        }
+
+        .column.done .column-title {
+            color: #64ff8f;
+        }
+
+        .column.blocked .column-title {
+            color: #ff4d6d;
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(100, 255, 143, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(100, 255, 143, 0.1);
+        }
+
+        .card-id {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .tag.priority-high {
+            background: rgba(255, 77, 109, 0.2);
+            color: #ff6b6b;
+        }
+
+        .tag.priority-medium {
+            background: rgba(255, 209, 102, 0.2);
+            color: #ffd166;
+        }
+
+        .tag.priority-low {
+            background: rgba(100, 255, 143, 0.2);
+            color: #64ff8f;
+        }
+
+        .tag.time {
+            background: rgba(123, 92, 255, 0.2);
+            color: #7b5cff;
+        }
+
+        .card-footer {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #7b5cff, #64ff8f);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 32px 16px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .board {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>📋 Kanban Board - Gahenax Webpage</h1>
+        <p>Última actualización: <span id="lastUpdate">2026-02-05 05:34 UTC</span></p>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-label">Total Tareas</div>
+            <div class="stat-value" id="totalTasks">15</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">Completadas</div>
+            <div class="stat-value" style="color: #64ff8f;" id="doneTasks">11</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">Progreso</div>
+            <div class="stat-value" style="color: #7b5cff;" id="progress">73%</div>
+        </div>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill" style="width: 73%;"></div>
+    </div>
+
+    <div class="board">
+
+        <!-- TODO Column -->
+        <div class="column todo">
+            <div class="column-header">
+                <span class="column-title">🔴 TODO</span>
+                <span class="column-count">4</span>
+            </div>
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-id">OBS-001</div>
+                    <div class="card-title">Setup Plausible Analytics</div>
+                    <div class="card-meta">
+                        <span class="tag priority-high">🔥 Alta</span>
+                        <span class="tag time">⏱ 30 min</span>
+                    </div>
+                    <div class="card-footer">
+                        Implementar analytics sin cookies<br>
+                        📝 Docs: ANALYTICS-SETUP.md
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-id">OBS-002</div>
+                    <div class="card-title">Setup Sentry Error Tracking</div>
+                    <div class="card-meta">
+                        <span class="tag priority-medium">🟡 Media</span>
+                        <span class="tag time">⏱ 45 min</span>
+                    </div>
+                    <div class="card-footer">
+                        Monitoreo de errores JavaScript
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-id">ASSET-001</div>
+                    <div class="card-title">Convertir SVG → PNG/JPG</div>
+                    <div class="card-meta">
+                        <span class="tag priority-high">🔥 Alta</span>
+                        <span class="tag time">⏱ 20 min</span>
+                    </div>
+                    <div class="card-footer">
+                        favicon.svg, og-image.svg → producción<br>
+                        📝 Docs: ASSET-GENERATION.md
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-id">COMP-002</div>
+                    <div class="card-title">WCAG Accessibility Audit</div>
+                    <div class="card-meta">
+                        <span class="tag priority-medium">🟡 Media</span>
+                        <span class="tag time">⏱ 1 hora</span>
+                    </div>
+                    <div class="card-footer">
+                        Ejecutar WAVE y corregir errores
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- IN PROGRESS Column -->
+        <div class="column inprogress">
+            <div class="column-header">
+                <span class="column-title">🟡 IN PROGRESS</span>
+                <span class="column-count">0</span>
+            </div>
+            <div class="cards">
+                <div class="empty-state">
+                    Arrastra tareas aquí para comenzar
+                </div>
+            </div>
+        </div>
+
+        <!-- DONE Column -->
+        <div class="column done">
+            <div class="column-header">
+                <span class="column-title">🟢 DONE</span>
+                <span class="column-count">11</span>
+            </div>
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-id">PERF-001</div>
+                    <div class="card-title">HTTP Caching (.htaccess)</div>
+                    <div class="card-meta">
+                        <span class="tag priority-high">✅ Completado</span>
+                    </div>
+                    <div class="card-footer">
+                        Commit: 60002c0 | 2026-02-05
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-id">PERF-002</div>
+                    <div class="card-title">Font Preload (Inter)</div>
+                    <div class="card-meta">
+                        <span class="tag priority-high">✅ Completado</span>
+                    </div>
+                    <div class="card-footer">
+                        Commit: 60002c0 | 2026-02-05
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-id">COMP-001</div>
+                    <div class="card-title">sitemap.xml para SEO</div>
+                    <div class="card-meta">
+                        <span class="tag priority-medium">✅ Completado</span>
+                    </div>
+                    <div class="card-footer">
+                        Commit: 60002c0 | Deployed ✅
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-id">OPS-001</div>
+                    <div class="card-title">GitHub Actions CI/CD</div>
+                    <div class="card-meta">
+                        <span class="tag priority-high">✅ Completado</span>
+                    </div>
+                    <div class="card-footer">
+                        Commit: 7370e68 | Auto-deploy configurado
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-id">CODE-002</div>
+                    <div class="card-title">Ruta CSS corregida</div>
+                    <div class="card-meta">
+                        <span class="tag priority-high">✅ Completado</span>
+                    </div>
+                    <div class="card-footer">
+                        Commit: 5ba6397 | PHASE 0 remediación
+                    </div>
+                </div>
+
+                <div class="card" style="opacity: 0.6;">
+                    <div class="card-id">+6 más</div>
+                    <div class="card-title">Ver KANBAN.md para lista completa</div>
+                    <div class="card-footer">
+                        11 tareas completadas en total
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- BLOCKED Column -->
+        <div class="column blocked">
+            <div class="column-header">
+                <span class="column-title">🔒 BLOCKED</span>
+                <span class="column-count">0</span>
+            </div>
+            <div class="cards">
+                <div class="empty-state">
+                    Sin bloqueos actualmente 🎉
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Auto-refresh timestamp
+        function updateTimestamp() {
+            const now = new Date();
+            document.getElementById('lastUpdate').textContent = now.toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+        }
+
+        // Card click handler
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function () {
+                const id = this.querySelector('.card-id').textContent;
+                const title = this.querySelector('.card-title').textContent;
+                alert(`📋 ${id}\n\n${title}\n\nVer KANBAN.md para más detalles`);
+            });
+        });
+
+        // Initialize
+        updateTimestamp();
+        setInterval(updateTimestamp, 60000);
+
+        console.log('🎯 Kanban Board loaded successfully!');
+        console.log('📊 Progress: 73% (11/15 tasks)');
+    </script>
+
+</body>
+
+</html>
