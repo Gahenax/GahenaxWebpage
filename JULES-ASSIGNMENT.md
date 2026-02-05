@@ -22,6 +22,32 @@ El sistema ha superado exitosamente **FASE 0 - Integridad Operativa Básica**.
 
 ---
 
+## ⚡ ACTUALIZACIÓN IMPORTANTE - REFACTOR EN PARALELO
+
+**Antigravity está ejecutando ahora un refactor de 7 fases del sitio completo.**
+
+**Fases que Antigravity ejecuta (no afectan tu trabajo):**
+- Phase 1: Hero & Value Rewrite
+- Phase 2: Content Restructure (nuevas secciones: Problems, Authority)
+- Phase 3: Authority Signals (anti-patterns, use cases)
+- Phase 4: UI/UX improvements
+- Phase 6: Tech & SEO updates
+
+**⭐ TU FASE (Phase 5 - NO CAMBIA):**
+- CONTACT-001: Contact Section Optimization
+- Spec completa en CONTACT-SECTION-SPEC.md
+- Inserta tu sección ANTES del `<footer>` (línea ~231)
+- NO hay conflictos - trabajas en sección diferente
+
+**Coordinación:**
+Cuando completes CONTACT-001, haz commit normal. Si hay merge conflict menor en líneas adyacentes, resuelve favoreciendo tu código (más reciente).
+
+**Docs Antigravity (para contexto si quieres):**
+- ANTIGRAVITY-DIAGNOSTIC.md
+- ANTIGRAVITY-EXECUTION-PLAN.md
+
+---
+
 ## 🎯 OBJETIVOS PRINCIPALES
 
 ### 🔥🔥 PRIORIDAD CRÍTICA
