@@ -27,5 +27,8 @@
 /* Temas y variantes (opcional) */
 /* @import url("./07-themes.css"); */
 
+/* Antigravity Refactor - Enhanced UI/UX */
+@import url("./08-antigravity.css");
+
 /* Estilos específicos de página */
 /* @import url("./pages/home.css"); */
