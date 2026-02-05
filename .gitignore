@@ -1,0 +1,30 @@
+# Gahenax Webpage - Git Ignore
+
+# Environment variables (SECURITY)
+.env
+.env.local
+.env.production
+
+# Deployment scripts with credentials
+deploy-ftp.ps1
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
