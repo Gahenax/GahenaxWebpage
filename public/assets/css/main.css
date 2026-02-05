@@ -1,0 +1,31 @@
+/* ===================================================================
+   GAHENAX AI SOLUTIONS - MAIN STYLESHEET
+   Punto de entrada único - Solo importaciones
+   =================================================================== */
+
+/* Design tokens: colores, tipografía, espaciado, variables */
+@import url("./00-tokens.css");
+
+/* Reset moderno + accesibilidad base */
+@import url("./01-reset.css");
+
+/* Estilos base: html, body, elementos semánticos */
+@import url("./02-base.css");
+
+/* Layout: grid, containers, primitivas espaciales */
+@import url("./03-layout.css");
+
+/* Componentes reutilizables */
+@import url("./04-components.css");
+
+/* Utilidades y helpers */
+@import url("./05-utilities.css");
+
+/* Transiciones y animaciones */
+@import url("./06-motion.css");
+
+/* Temas y variantes (opcional) */
+/* @import url("./07-themes.css"); */
+
+/* Estilos específicos de página */
+/* @import url("./pages/home.css"); */

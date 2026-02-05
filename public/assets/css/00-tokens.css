@@ -1,0 +1,127 @@
+/* ===================================================================
+   00 - DESIGN TOKENS
+   Sistema de diseño: colores, tipografía, espaciado, radios, sombras
+   =================================================================== */
+
+:root {
+    /* ===== COLORS ===== */
+    --bg: #07070a;
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-2: rgba(255, 255, 255, 0.09);
+    --border: rgba(255, 255, 255, 0.12);
+
+    --text: rgba(255, 255, 255, 0.92);
+    --muted: rgba(255, 255, 255, 0.68);
+
+    --accent: #64ff8f;
+    /* verde criterio */
+    --accent-2: #7b5cff;
+    /* morado criterio */
+    --danger: #ff4d6d;
+    --warning: #ffd166;
+
+    /* Legacy aliases for backwards compatibility */
+    --panel: var(--surface);
+    --green: var(--accent);
+    --purple: var(--accent-2);
+
+    /* ===== TYPOGRAPHY ===== */
+    --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+    /* Font weights */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    --font-black: 900;
+
+    /* Line heights */
+    --line-height-tight: 1.05;
+    --line-height-snug: 1.25;
+    --line-height-normal: 1.55;
+    --line-height-relaxed: 1.75;
+
+    /* Letter spacing */
+    --letter-spacing-tight: -0.04em;
+    --letter-spacing-snug: -0.03em;
+    --letter-spacing-normal: -0.02em;
+    --letter-spacing-wide: -0.01em;
+    --letter-spacing-wider: 0.02em;
+
+    /* ===== SIZING ===== */
+    --container: 1120px;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --radius-full: 999px;
+
+    /* Legacy radius aliases */
+    --radius: var(--radius-lg);
+
+    /* ===== SPACING ===== */
+    --s-1: 6px;
+    --s-2: 10px;
+    --s-3: 14px;
+    --s-4: 18px;
+    --s-5: 24px;
+    --s-6: 32px;
+    --s-7: 44px;
+    --s-8: 64px;
+
+    /* Legacy spacing aliases */
+    --space-xs: var(--s-1);
+    --space-sm: var(--s-2);
+    --space-md: var(--s-4);
+    --space-lg: var(--s-5);
+    --space-xl: var(--s-6);
+    --space-2xl: var(--s-7);
+    --space-3xl: var(--s-8);
+    --space-4xl: 96px;
+    --space-5xl: 120px;
+    --space-6xl: 140px;
+
+    /* ===== SHADOWS ===== */
+    --shadow-1: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --shadow-2: 0 18px 50px rgba(0, 0, 0, 0.45);
+
+    /* Legacy shadow aliases */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: var(--shadow-1);
+    --shadow-lg: var(--shadow-2);
+    --shadow-xl: 0 24px 72px rgba(123, 92, 255, 0.35);
+    --shadow-glow-purple: 0 0 40px rgba(123, 92, 255, 0.3);
+    --shadow-glow-green: 0 0 40px rgba(100, 255, 143, 0.3);
+
+    /* ===== FOCUS ===== */
+    --focus: 0 0 0 3px rgba(100, 255, 143, 0.22);
+
+    /* ===== GRADIENTS ===== */
+    --grad-hero: radial-gradient(900px 500px at 15% 5%, rgba(123, 92, 255, 0.25), transparent 55%),
+        radial-gradient(700px 420px at 85% 0%, rgba(100, 255, 143, 0.18), transparent 60%),
+        radial-gradient(600px 420px at 50% 120%, rgba(255, 255, 255, 0.06), transparent 60%);
+
+    --gradient-primary: linear-gradient(135deg, var(--accent-2), var(--accent));
+    --gradient-panel: linear-gradient(160deg, rgba(123, 92, 255, 0.15), rgba(100, 255, 143, 0.12));
+
+    /* ===== MOTION ===== */
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --t-fast: 160ms;
+    --t-med: 240ms;
+
+    /* Legacy transition aliases */
+    --transition-fast: var(--t-fast) var(--ease);
+    --transition-base: var(--t-med) var(--ease);
+    --transition-slow: 350ms var(--ease);
+
+    /* ===== Z-INDEX SCALE ===== */
+    --z-base: 0;
+    --z-dropdown: 10;
+    --z-sticky: 50;
+    --z-header: 100;
+    --z-modal-backdrop: 900;
+    --z-modal: 1000;
+    --z-tooltip: 1100;
+}

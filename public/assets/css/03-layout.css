@@ -1,0 +1,43 @@
+/* ===================================================================
+   03 - LAYOUT
+   Grid, containers, primitivas espaciales, section spacing
+   =================================================================== */
+
+.container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--s-5);
+}
+
+.section {
+    padding: var(--s-8) 0;
+}
+
+.stack>*+* {
+    margin-top: var(--s-4);
+}
+
+.grid {
+    display: grid;
+    gap: var(--s-5);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: var(--s-7) 0;
+    }
+}

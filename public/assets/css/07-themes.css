@@ -1,0 +1,56 @@
+/* ===================================================================
+   07 - THEMES
+   Variantes de tema (opcional): light/dark modes, high contrast
+   =================================================================== */
+
+/* 
+  Por defecto, el sitio usa dark mode.
+  Este archivo está preparado para futuras variantes de tema.
+*/
+
+/* ===== DARK MODE (default) ===== */
+:root {
+    color-scheme: dark;
+}
+
+/* ===== LIGHT MODE (futuro) ===== */
+/*
+[data-theme="light"] {
+  --bg: #ffffff;
+  --panel: #f5f5f7;
+  --text: #1a1a1f;
+  --muted: #6e6e73;
+  --border: rgba(0, 0, 0, 0.1);
+  
+  color-scheme: light;
+}
+*/
+
+/* ===== HIGH CONTRAST MODE (futuro) ===== */
+/*
+[data-theme="high-contrast"] {
+  --bg: #000000;
+  --panel: #1a1a1a;
+  --text: #ffffff;
+  --muted: #cccccc;
+  --purple: #9d7aff;
+  --green: #3dffc4;
+  --border: rgba(255, 255, 255, 0.2);
+}
+*/
+
+/* ===== AUTOMATIC THEME DETECTION ===== */
+/*
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    // Apply light theme tokens here
+  }
+}
+*/
+
+/* Theme toggle button (futuro) */
+/*
+.theme-toggle {
+  // Estilos para el botón de cambio de tema
+}
+*/
