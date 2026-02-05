@@ -3,291 +3,267 @@
    Componentes reutilizables: buttons, cards, badges, forms, nav, footer
    =================================================================== */
 
-/* ===== HEADER & NAVIGATION ===== */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: var(--z-header);
-    background: rgba(5, 5, 7, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    transition: background var(--transition-base);
+/* ===== CARD ===== */
+.card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.04));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-1);
+    overflow: hidden;
 }
 
-.header:hover {
-    background: rgba(5, 5, 7, 0.85);
+.card__body {
+    padding: var(--s-6);
 }
 
-.nav {
-    display: flex;
+/* ===== BADGE ===== */
+.badge {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    height: 72px;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.78);
 }
 
-.brand {
-    font-weight: var(--font-extrabold);
-    letter-spacing: var(--letter-spacing-normal);
-    font-size: 1.1rem;
+.badge--beta {
+    border-color: rgba(255, 209, 102, 0.35);
 }
 
-.brand-highlight {
-    color: var(--green);
+.badge--live {
+    border-color: rgba(100, 255, 143, 0.35);
 }
 
-.nav-links {
-    display: flex;
-    gap: 28px;
-    font-size: var(--text-base);
-    color: var(--muted);
-}
-
-.nav-links a {
-    position: relative;
-    padding: 4px 0;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: width var(--transition-base);
-}
-
-.nav-links a:hover::after {
-    width: 100%;
+.badge--private {
+    border-color: rgba(123, 92, 255, 0.35);
 }
 
 /* ===== BUTTONS ===== */
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    padding: var(--space-md) 26px;
-    border-radius: var(--radius-full);
-    font-weight: var(--font-bold);
-    letter-spacing: var(--letter-spacing-wide);
-    transition: transform var(--transition-base),
-        box-shadow var(--transition-base);
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    transition: transform var(--t-fast) var(--ease),
+        background var(--t-fast) var(--ease),
+        border-color var(--t-fast) var(--ease);
     cursor: pointer;
-    border: none;
 }
 
+.btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.btn:active {
+    transform: translateY(0px);
+}
+
+.btn--primary {
+    border-color: rgba(100, 255, 143, 0.35);
+    background: linear-gradient(180deg, rgba(100, 255, 143, 0.14), rgba(100, 255, 143, 0.06));
+}
+
+.btn--primary:hover {
+    background: linear-gradient(180deg, rgba(100, 255, 143, 0.18), rgba(100, 255, 143, 0.08));
+}
+
+.btn--ghost {
+    background: transparent;
+}
+
+/* Legacy button aliases */
 .btn-primary {
-    background: var(--gradient-primary);
-    color: #050507;
-    box-shadow: var(--shadow-lg);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
-    color: #050507;
-}
-
-.btn-primary:active {
-    transform: translateY(0);
+    @apply btn--primary;
 }
 
 .btn-secondary {
-    background: var(--panel);
-    color: var(--text);
-    border: 1px solid var(--border);
+    @apply btn--ghost;
 }
 
-.btn-secondary:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
+/* ===== NAV ===== */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(14px);
+    background: rgba(7, 7, 10, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-/* ===== CARDS ===== */
-.card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-xl);
-    transition: border-color var(--transition-base),
-        transform var(--transition-base),
-        box-shadow var(--transition-base);
+.nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--s-4) 0;
 }
 
-.card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
+.nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
-.card-title {
-    margin-top: 0;
-    margin-bottom: var(--space-sm);
-    font-size: var(--text-xl);
-    letter-spacing: var(--letter-spacing-wide);
-    font-weight: var(--font-semibold);
+.nav__links {
+    display: flex;
+    gap: 14px;
+    color: rgba(255, 255, 255, 0.72);
 }
 
-.card-body {
-    color: var(--muted);
-    font-size: var(--text-base);
-    margin: 0;
+.nav__links a {
+    padding: 10px 12px;
+    border-radius: 12px;
 }
 
-/* ===== PROCESS STEPS ===== */
-.step {
-    padding: 28px;
-    border: 1px dashed var(--border);
-    border-radius: var(--radius-lg);
-    transition: border-color var(--transition-base),
-        border-style var(--transition-base);
+.nav__links a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.92);
 }
 
-.step:hover {
-    border-style: solid;
-    border-color: var(--green);
+/* Legacy nav aliases */
+.header {
+    @apply nav;
 }
 
-.step-number {
-    color: var(--green);
-    font-weight: var(--font-bold);
-    font-size: var(--text-sm);
-    display: block;
-    margin-bottom: var(--space-xs);
+.brand {
+    @apply nav__brand;
 }
 
-.step-title {
-    margin: var(--space-xs) 0;
-    font-weight: var(--font-semibold);
+.brand-highlight {
+    color: var(--accent);
 }
 
-.step-desc {
-    color: var(--muted);
-    font-size: var(--text-sm);
-    margin: 0;
+/* ===== FORMS ===== */
+.input,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
 }
 
-/* ===== SECTION HEADERS ===== */
-.section-title {
-    font-size: var(--text-3xl);
-    letter-spacing: var(--letter-spacing-snug);
-    margin-bottom: 20px;
-    font-weight: var(--font-bold);
+.input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: var(--focus);
+    border-color: rgba(100, 255, 143, 0.25);
 }
 
-.section-subtitle {
-    color: var(--muted);
-    max-width: 720px;
-    margin-bottom: 56px;
-    font-size: 1.05rem;
+/* Legacy form aliases */
+.form-input {
+    @apply input;
 }
 
-/* ===== BADGES ===== */
-.badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: var(--radius-full);
-    font-size: var(--text-xs);
-    font-weight: var(--font-semibold);
-    letter-spacing: var(--letter-spacing-wider);
-    text-transform: uppercase;
-}
-
-.badge-purple {
-    background: rgba(109, 74, 255, 0.2);
-    color: var(--purple);
-    border: 1px solid rgba(109, 74, 255, 0.3);
-}
-
-.badge-green {
-    background: rgba(35, 230, 168, 0.2);
-    color: var(--green);
-    border: 1px solid rgba(35, 230, 168, 0.3);
+.form-textarea {
+    @apply textarea;
 }
 
 /* ===== FOOTER ===== */
 .footer {
     border-top: 1px solid var(--border);
-    padding: var(--space-3xl) 0;
+    padding: var(--s-8) 0;
     color: var(--muted);
-    background: rgba(5, 5, 7, 0.5);
+    background: rgba(7, 7, 10, 0.5);
 }
 
 .footer-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
-    gap: var(--space-xl);
+    gap: var(--s-6);
 }
 
 .footer-brand {
     font-weight: var(--font-extrabold);
     font-size: 1.1rem;
     color: var(--text);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--s-3);
 }
 
 .footer strong {
     color: var(--text);
     display: block;
-    margin-bottom: var(--space-xs);
+    margin-bottom: var(--s-2);
 }
 
 .footer p {
     margin: 0;
-    font-size: var(--text-base);
 }
 
-/* ===== FORMS ===== */
-.form-group {
-    margin-bottom: var(--space-lg);
+/* ===== SECTION HEADERS ===== */
+.section-title {
+    font-size: clamp(22px, 2.6vw, 34px);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--s-3);
+    font-weight: var(--font-bold);
 }
 
-.form-label {
-    display: block;
-    margin-bottom: var(--space-xs);
-    font-weight: var(--font-medium);
-    color: var(--text);
-}
-
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: var(--space-md);
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    color: var(--text);
-    transition: border-color var(--transition-base);
-}
-
-.form-input:focus,
-.form-textarea:focus {
-    outline: none;
-    border-color: var(--purple);
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
+.section-subtitle {
     color: var(--muted);
+    max-width: 720px;
+    margin-bottom: var(--s-7);
+    font-size: 16px;
 }
 
-/* Responsive */
+/* ===== PROCESS STEPS ===== */
+.step {
+    padding: var(--s-5);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--t-med) var(--ease),
+        border-style var(--t-med) var(--ease);
+}
+
+.step:hover {
+    border-style: solid;
+    border-color: var(--accent);
+}
+
+.step-number {
+    color: var(--accent);
+    font-weight: var(--font-bold);
+    font-size: 12px;
+    display: block;
+    margin-bottom: var(--s-2);
+}
+
+.step-title {
+    margin: var(--s-2) 0;
+    font-weight: var(--font-semibold);
+}
+
+.step-desc {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
     .footer-grid {
         grid-template-columns: 1fr;
     }
 
-    .nav-links {
-        gap: var(--space-md);
-        font-size: var(--text-sm);
+    .nav__links {
+        gap: var(--s-2);
+        font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
-    .brand {
-        font-size: 1rem;
+    .nav__brand {
+        font-size: 16px;
     }
 
     .btn {

@@ -3,193 +3,26 @@
    Transiciones y animaciones discretas
    =================================================================== */
 
-/* ===== KEYFRAME ANIMATIONS ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.fade-in {
+    animation: fadeIn var(--t-med) var(--ease) both;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(6px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.7;
-    }
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -1000px 0;
-    }
-
-    100% {
-        background-position: 1000px 0;
-    }
-}
-
-/* ===== ANIMATION CLASSES ===== */
-.animate-fade-in {
-    animation: fadeIn 0.5s ease-out;
-}
-
-.animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out;
-}
-
-.animate-fade-in-down {
-    animation: fadeInDown 0.6s ease-out;
-}
-
-.animate-slide-in-left {
-    animation: slideInLeft 0.5s ease-out;
-}
-
-.animate-slide-in-right {
-    animation: slideInRight 0.5s ease-out;
-}
-
-.animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.animate-spin {
-    animation: spin 1s linear infinite;
-}
-
-/* ===== TRANSITION UTILITIES ===== */
-.transition-none {
-    transition: none;
-}
-
-.transition-all {
-    transition: all var(--transition-base);
-}
-
-.transition-colors {
-    transition: color var(--transition-base),
-        background-color var(--transition-base),
-        border-color var(--transition-base);
-}
-
-.transition-transform {
-    transition: transform var(--transition-base);
-}
-
-.transition-opacity {
-    transition: opacity var(--transition-base);
-}
-
-/* ===== HOVER EFFECTS ===== */
-.hover-lift {
-    transition: transform var(--transition-base),
-        box-shadow var(--transition-base);
-}
-
-.hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
-
-.hover-scale {
-    transition: transform var(--transition-base);
-}
-
-.hover-scale:hover {
-    transform: scale(1.05);
-}
-
-.hover-glow-purple {
-    transition: box-shadow var(--transition-slow);
-}
-
-.hover-glow-purple:hover {
-    box-shadow: var(--shadow-glow-purple);
-}
-
-.hover-glow-green {
-    transition: box-shadow var(--transition-slow);
-}
-
-.hover-glow-green:hover {
-    box-shadow: var(--shadow-glow-green);
-}
-
-/* ===== REDUCED MOTION ===== */
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
     }
 }
