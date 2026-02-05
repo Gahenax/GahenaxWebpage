@@ -238,6 +238,19 @@ textarea:focus {
     font-size: 16px;
 }
 
+/* ===== HERO CLARITY (UX REFACTOR) ===== */
+.hero-content-wrapper {
+    max-width: 720px;
+    /* Constrain hero text for readability */
+}
+
+.hero-subhead {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: var(--s-4) 0 var(--s-5);
+}
+
 /* ===== PROCESS STEPS ===== */
 .step {
     padding: var(--s-5);
