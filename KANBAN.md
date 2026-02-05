@@ -20,12 +20,41 @@ BLOCKED: 0 tareas
 
 | ID | Tarea | Prioridad | Asignado | Estimado |
 |----|-------|-----------|----------|----------|
+| **CONTACT-001** | Contact Section Optimization | 🔥🔥 Crítica | Jules | 2-3 horas |
 | **OBS-001** | Setup Plausible Analytics | 🔥 Alta | - | 30 min |
 | **OBS-002** | Setup Sentry Error Tracking | 🟡 Media | - | 45 min |
 | **ASSET-001** | Convertir SVG → PNG/JPG | 🔥 Alta | - | 20 min |
 | **COMP-002** | WCAG Accessibility Audit | 🟡 Media | - | 1 hora |
 
 ### Detalles
+
+#### CONTACT-001: Contact Section Optimization 🔥🔥
+**Descripción:** Transformar #contacto de footer estático a sección de conversión calificada  
+**Dependencias:** Ninguna  
+**Bloqueadores:** Ninguno  
+**Docs:** `CONTACT-SECTION-SPEC.md` (especificación completa)  
+**Asignado:** Jules Google AI Agent  
+
+**Pasos (7-Phase Protocol):**
+1. Crear nueva sección #contacto antes del footer
+2. Agregar framing copy (filtrado de audiencia)
+3. Implementar form con 4 campos estratégicos
+4. Diseñar CTA process-oriented
+5. Agregar expectation-setting notice
+6. Integrar FormSpree (backend-less)
+7. QA completo + deployment
+
+**Success Criteria:**
+- Filtering copy clara y profesional
+- Form funcional con validación
+- Mobile responsive
+- Accessible (WCAG AA)
+- No regressions en otras secciones
+
+**Priority Rationale:**
+Única vía de conversión del sitio. Sin form, sin leads calificados.
+
+---
 
 #### OBS-001: Plausible Analytics
 **Descripción:** Implementar analytics sin cookies  

@@ -24,6 +24,49 @@ El sistema ha superado exitosamente **FASE 0 - Integridad Operativa Básica**.
 
 ## 🎯 OBJETIVOS PRINCIPALES
 
+### 🔥🔥 PRIORIDAD CRÍTICA
+
+#### CONTACT-001: Contact Section Optimization
+**Meta:** Crear sección de contacto calificada que filtre leads y maximize señal
+
+**Contexto:**
+Actualmente `#contacto` es solo un footer con email estático. Necesitamos una sección de conversión profesional que:
+- Filtre audiencia no calificada mediante copy estratégico
+- Capture información de alto valor (problema, contexto, empresa)
+- Establezca expectativas claras sobre proceso de revisión
+- Mantenga diseño premium y accesible
+
+**Especificación Completa:** `CONTACT-SECTION-SPEC.md`
+
+**Checklist de Ejecución:**
+- [ ] Leer spec completo en CONTACT-SECTION-SPEC.md
+- [ ] Crear nueva `<section id="contacto">` antes del footer (línea ~231 en index.html)
+- [ ] Implementar framing copy (filtering language)
+- [ ] Construir form con 4 campos:
+  - Empresa/Organización (text, required)
+  - Email Corporativo (email, required)
+  - Problema Específico (textarea, required, min 100 chars)
+  - Contexto Técnico (textarea, optional)
+- [ ] Diseñar CTA: "Solicitar Evaluación" (process-oriented)
+- [ ] Agregar expectation notice (48-72h review, selective response)
+- [ ] Integrar FormSpree o mailto: como backend
+- [ ] Crear estilos en 04-components.css
+- [ ] Testear responsive (mobile + desktop)
+- [ ] Verificar accesibilidad (WCAG AA)
+- [ ] Deployment a producción
+- [ ] Verificar funcionamiento en https://gahenaxaisolutions.com
+
+**Tiempo Estimado:** 2-3 horas
+
+**Criterios de Éxito:**
+✅ Form funciona y envía emails  
+✅ Copy filtra y establece expectativas  
+✅ Mobile responsive  
+✅ Accesible  
+✅ No rompe otras secciones  
+
+---
+
 ### 1. COMPLETAR FASE 1 - Rendimiento y Estabilidad
 
 **Meta:** Sistema responde de forma consistente bajo condiciones normales
