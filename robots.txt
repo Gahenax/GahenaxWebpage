@@ -1,0 +1,15 @@
+# Gahenax AI Solutions - Robots.txt
+# https://gahenaxaisolutions.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://gahenaxaisolutions.com/sitemap.xml
+
+# Crawl-delay for respectful bots
+Crawl-delay: 1
+
+# Block specific paths (if any in the future)
+# Disallow: /admin/
+# Disallow: /private/
