@@ -1,0 +1,60 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Permite deploy manual
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env
+            **/deploy-ftp.ps1
+            **/monitor-jules.ps1
+            **/.last-commit-hash
+            **/JULES-*.md
+            **/MONITORING-*.md
+            **/AUDIT-*.md
+            **/PERFORMANCE-*.md
+            **/ANALYTICS-*.md
+            **/ASSET-*.md
+            **/*.ps1
+            **/*.log
+          
+      - name: Verify deployment
+        run: |
+          echo "Checking if site is accessible..."
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://gahenaxaisolutions.com)
+          if [ $HTTP_CODE -eq 200 ]; then
+            echo "✅ Site is UP (HTTP $HTTP_CODE)"
+          else
+            echo "⚠️  Site returned HTTP $HTTP_CODE"
+            exit 1
+          fi
+          
+      - name: Notify on success
+        if: success()
+        run: echo "🎉 Deployment successful!"
+        
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "❌ Deployment failed!"
+          exit 1
