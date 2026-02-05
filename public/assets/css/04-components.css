@@ -83,11 +83,16 @@
 
 /* Legacy button aliases */
 .btn-primary {
-    @apply btn--primary;
+    border-color: rgba(100, 255, 143, 0.35);
+    background: linear-gradient(180deg, rgba(100, 255, 143, 0.14), rgba(100, 255, 143, 0.06));
+}
+
+.btn-primary:hover {
+    background: linear-gradient(180deg, rgba(100, 255, 143, 0.18), rgba(100, 255, 143, 0.08));
 }
 
 .btn-secondary {
-    @apply btn--ghost;
+    background: transparent;
 }
 
 /* ===== NAV ===== */
@@ -133,11 +138,20 @@
 
 /* Legacy nav aliases */
 .header {
-    @apply nav;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(14px);
+    background: rgba(7, 7, 10, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .brand {
-    @apply nav__brand;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .brand-highlight {
@@ -163,11 +177,19 @@ textarea:focus {
 
 /* Legacy form aliases */
 .form-input {
-    @apply input;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .form-textarea {
-    @apply textarea;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 /* ===== FOOTER ===== */
