@@ -10,6 +10,18 @@
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-1);
     overflow: hidden;
+    word-wrap: break-word;
+    /* Prevent text overflow */
+    overflow-wrap: break-word;
+    /* Modern alternative */
+}
+
+.card * {
+    word-wrap: break-word;
+    /* Apply to all children */
+    overflow-wrap: break-word;
+    hyphens: auto;
+    /* Optional: add hyphenation for long words */
 }
 
 .card__body {

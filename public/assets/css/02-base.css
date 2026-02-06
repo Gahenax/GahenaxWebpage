@@ -19,6 +19,8 @@ p {
     color: var(--muted);
     line-height: 1.6;
     margin: 0 0 var(--s-4);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 h1,
@@ -26,6 +28,8 @@ h2,
 h3 {
     margin: 0 0 var(--s-3);
     letter-spacing: -0.02em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 h1 {
